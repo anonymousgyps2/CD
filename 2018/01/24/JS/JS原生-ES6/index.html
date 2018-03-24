@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="发现自己对于 javascript 的底层 API 所知甚少，在这里记录一下所遇到的有趣又是在的 API。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS原生-ES6">
+<meta property="og:url" content="colorfulWorld.github.io/2018/01/24/JS/JS原生-ES6/index.html">
+<meta property="og:site_name" content="Eternal">
+<meta property="og:description" content="发现自己对于 javascript 的底层 API 所知甚少，在这里记录一下所遇到的有趣又是在的 API。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-23T09:37:14.874Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS原生-ES6">
+<meta name="twitter:description" content="发现自己对于 javascript 的底层 API 所知甚少，在这里记录一下所遇到的有趣又是在的 API。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="colorfulWorld.github.io/2018/01/24/JS/JS原生-ES6/"/>
+
+
+
+
+
+  <title>JS原生-ES6 | Eternal</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Eternal</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="colorfulWorld.github.io/2018/01/24/JS/JS原生-ES6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="colorfulWorld">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Eternal">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JS原生-ES6</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-24T10:51:11+08:00">
+                2018-01-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/原生JS/" itemprop="url" rel="index">
+                    <span itemprop="name">原生JS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>发现自己对于 javascript 的底层 API 所知甚少，在这里记录一下所遇到的有趣又是在的 API。</p>
+<a id="more"></a>
+<h2 id="set-对象-（可用于去重）"><a href="#set-对象-（可用于去重）" class="headerlink" title="set 对象 （可用于去重）"></a>set 对象 （可用于去重）</h2><p>set 独享允许你存储任何类型唯一值，无论是原始值或是对象。NaN 之间视为相同的值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">引用 <span class="keyword">const</span> set1 = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>,<span class="number">1</span>, <span class="number">2</span>, <span class="literal">NaN</span>, <span class="literal">NaN</span>, <span class="number">5</span>]);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(set1.has(<span class="number">1</span>)); <span class="comment">// expected output: true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(set1.has(<span class="number">5</span>)); <span class="comment">// expected output: true</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(set1.has(<span class="number">6</span>)); <span class="comment">// expected output:false</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.from(set1)) <span class="comment">// Array [1, 2, 3, 4, NaN, 5]</span></span><br></pre></td></tr></table></figure>
+<h2 id="Array-from"><a href="#Array-from" class="headerlink" title="Array.from()"></a>Array.from()</h2><p>从一个类似数组或可迭代对象中创建一个新的数组实例。</p>
+<h2 id="super"><a href="#super" class="headerlink" title="super"></a>super</h2><p>super 关键字用于访问和调用一个对象的父对象的函数。( 只能在 class 内部用 )</p>
+<p>在构造函数中使用时，super 关键字将单独出现，并且必须在使用 this 之前使用。</p>
+<p>super 关键字也可以用来调用父对象上的函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">super</span>([<span class="built_in">arguments</span>]);</span><br><span class="line"><span class="comment">// 调用 父对象/父类 的构造函数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">super</span>.functionOnParent([<span class="built_in">arguments</span>]);</span><br><span class="line"><span class="comment">// 调用 父对象/父类 上的方法</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Polygon</span> </span>&#123;</span><br><span class="line">  construector(height, width) &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'Polygon'</span></span><br><span class="line">    <span class="keyword">this</span>.height = height</span><br><span class="line">    <span class="keyword">this</span>.width = width</span><br><span class="line">  &#125;</span><br><span class="line">  sayName() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Hi,I am a'</span>, <span class="keyword">this</span>.name + <span class="string">'.'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Square</span> <span class="keyword">extends</span> <span class="title">Polygon</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(length)&#123;</span><br><span class="line">      <span class="keyword">this</span>.height;</span><br><span class="line">      <span class="comment">// ReferenceError ,super 需要先被调用！</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">/*</span></span><br><span class="line"><span class="comment">       这里，它调用父类的构造函数的length,</span></span><br><span class="line"><span class="comment">       作为Polygon 的 width 和 height</span></span><br><span class="line"><span class="comment">       */</span></span><br><span class="line">       <span class="keyword">super</span>(length,length)</span><br><span class="line">       <span class="comment">/*</span></span><br><span class="line"><span class="comment">       注意，在派生的类中，在你可以使用this之前，必须 先调用super()。忽略这，这将导致引用错误。</span></span><br><span class="line"><span class="comment">       */</span></span><br><span class="line">       <span class="keyword">this</span>.name = <span class="string">'Square'</span></span><br><span class="line">    &#125;</span><br><span class="line">    get area()&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.height * <span class="keyword">this</span>.width</span><br><span class="line">    &#125;</span><br><span class="line">    set area(value)&#123;</span><br><span class="line">      <span class="keyword">this</span>.area = value</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>使用 super 调用父类的静态方法。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Human</span></span>&#123;&#125;</span><br><span class="line">  <span class="keyword">constructor</span>()&#123;&#125;</span><br><span class="line">    <span class="keyword">static</span> ping()&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">'ping'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">computer</span> <span class="title">eatends</span> <span class="title">Human</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>()&#123;&#125;</span><br><span class="line">  <span class="keyword">static</span> pingpong()&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.ping()+<span class="string">'pong'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Computer.pingpong()</span><br></pre></td></tr></table></figure>
+<p><strong>原始 class 实现方式</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">&#125;</span><br><span class="line">Parent.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.name</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  Parent.call(<span class="keyword">this</span>, name)</span><br><span class="line">  <span class="keyword">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//实现继承</span></span><br><span class="line">Child.prototype = <span class="keyword">new</span> Parent()</span><br><span class="line">Child.prototype.constructor = Child</span><br><span class="line"></span><br><span class="line">Child.prototype.getAge = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.Age</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> people = <span class="keyword">new</span> Child(<span class="string">'lily'</span>, <span class="number">20</span>)</span><br><span class="line"><span class="built_in">console</span>.log(people.getName())</span><br></pre></td></tr></table></figure>
+<p><strong>语法糖</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> </span>&#123;</span><br><span class="line">  construtor(name) &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">  &#125;</span><br><span class="line">  getAge() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.age</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> people = <span class="keyword">new</span> Child(<span class="string">"lily"</span>,<span class="number">20</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(people.getName())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="异步函数"><a href="#异步函数" class="headerlink" title="异步函数"></a>异步函数</h2><p>除了 javascript Promise , 异步函数进一步重写了传统的异步代码结构。</p>
+<h3 id="一个以-async-为前缀的常规函数"><a href="#一个以-async-为前缀的常规函数" class="headerlink" title="一个以 async 为前缀的常规函数"></a>一个以 async 为前缀的常规函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">fetchdata</span>(<span class="params">url</span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="在异步函数（Async-function-）内，使用-await-关键字调用异步操作函数"><a href="#在异步函数（Async-function-）内，使用-await-关键字调用异步操作函数" class="headerlink" title="在异步函数（Async function ）内，使用 await 关键字调用异步操作函数"></a>在异步函数（Async function ）内，使用 await 关键字调用异步操作函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getaSync</span>(<span class="params">url</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">    xhr.open(<span class="string">'GET'</span>, url)</span><br><span class="line">    xhr.onload = <span class="function"><span class="params">()</span> =&gt;</span> resolve(xhr.responseText)</span><br><span class="line">    xhr.onerror = <span class="function"><span class="params">()</span> =&gt;</span> reject(xhr.statusText)</span><br><span class="line">    xhr.send()</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">fetchdata</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> text1 = <span class="keyword">await</span> getasync(<span class="string">'test.txt'</span>)</span><br><span class="line">  <span class="built_in">console</span>.logtex(text1)</span><br><span class="line">  <span class="keyword">var</span> text2 = <span class="keyword">await</span> getasync(<span class="string">'test2.text'</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(text2)</span><br><span class="line">  <span class="keyword">var</span> text3 = <span class="keyword">await</span> getasync(<span class="string">'text3.text)</span></span><br><span class="line"><span class="string">  console.log(text3)</span></span><br><span class="line"><span class="string">  return '</span>Finished<span class="string">'</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">fetchdata().then((msg)=&gt;&#123;</span></span><br><span class="line"><span class="string">  console.log(msg) //“test.txt”，“test2.txt”，“test3.txt”</span></span><br><span class="line"><span class="string">&#125;)</span></span><br></pre></td></tr></table></figure>
+<p>在异步函数中，我们把异步函数 getasync() 当做是同步函数，没有 then() 方法或回调函数通知下一步。无论何时遇到关键字 await , 执行都会停止，直到 getasync() 解决，然后再转到异步函数中的下一行。结果与纯粹的基于 Promise , 使用一串 then 方法的方式一样</p>
+<h2 id="解构"><a href="#解构" class="headerlink" title="解构"></a>解构</h2><p>ES6 解构并非一个新的功能，而是一个新的复制语法，可以快速解压缩对象属性和数组中的值，并将它们分配给各个变量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> profile = &#123; <span class="attr">name</span>: <span class="string">'georage'</span>, <span class="attr">age</span>: <span class="number">39</span>, <span class="attr">hobby</span>: <span class="string">'Tennis'</span> &#125;</span><br><span class="line"><span class="keyword">var</span> &#123; name, hobby &#125; = profile</span><br><span class="line"><span class="built_in">console</span>.log(name) <span class="comment">//'georage'</span></span><br><span class="line"><span class="built_in">console</span>.log(hobby) <span class="comment">//'Tennis'</span></span><br></pre></td></tr></table></figure>
+<p>这里我用解构快速提取 profile 对象的 name 和 hobby 属性。</p>
+<p>使用别名，你可以使用与你正在提取值的对象属性不同的变量名：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> profile = &#123; <span class="attr">name</span>: <span class="string">'georage'</span>, <span class="attr">age</span>: <span class="number">39</span>, <span class="attr">hobby</span>: <span class="string">'Tennis'</span> &#125;</span><br><span class="line"><span class="keyword">var</span> &#123; <span class="attr">name</span>: n, <span class="attr">hobby</span>: h &#125; = profile</span><br><span class="line"><span class="built_in">console</span>.log(n) <span class="comment">//'georage'</span></span><br><span class="line"><span class="built_in">console</span>.log(h) <span class="comment">//'Tennis'</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="嵌套对象解构"><a href="#嵌套对象解构" class="headerlink" title="嵌套对象解构"></a>嵌套对象解构</h3><p>解构也可以与嵌套对象一起工作，可以使用它来快速解开来自复杂的 JSON 请求的值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> jsondata = &#123;</span><br><span class="line">  title: <span class="string">'XX'</span>,</span><br><span class="line">  details: &#123;</span><br><span class="line">    data: &#123;</span><br><span class="line">      created: <span class="string">'2017/09/19'</span>,</span><br><span class="line">      modified: <span class="string">'2017/09/20'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    catrgory: <span class="string">'js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  url: <span class="string">'/baidu/'</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> &#123;title,<span class="attr">details</span>:&#123;<span class="attr">data</span>:&#123;created.modified&#125;&#125;&#125; = jsondata</span><br><span class="line"><span class="built_in">console</span>.log(title)</span><br><span class="line"><span class="built_in">console</span>.log(created)</span><br><span class="line"><span class="built_in">console</span>.log(modified)</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="解构数组"><a href="#解构数组" class="headerlink" title="解构数组"></a>解构数组</h3><p>数组的解构与对象上的工作方式类似，除了左边的花括号使用<strong>方括号</strong>代替：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> soccerteam = [<span class="string">'George'</span>, <span class="string">'Dennis'</span>, <span class="string">'Sandy'</span>]</span><br><span class="line"><span class="keyword">var</span> [a, b] = soccerteam</span><br><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">// "George"</span></span><br><span class="line"><span class="built_in">console</span>.log(b) <span class="comment">// "Dennis"</span></span><br></pre></td></tr></table></figure>
+<p>你可以跳过某些数组元素，通过使用 (,)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="keyword">var</span> soccerteam = [<span class="string">'George'</span>, <span class="string">'Dennis'</span>, <span class="string">'Sandy'</span>]</span><br><span class="line"><span class="keyword">var</span> [a,,b] = soccerteam</span><br><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">// "George"</span></span><br><span class="line"><span class="built_in">console</span>.log(b) <span class="comment">// "Sandy"</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="默认和剩余参数"><a href="#默认和剩余参数" class="headerlink" title="默认和剩余参数"></a>默认和剩余参数</h2><h3 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h3><p>在这之前我们都使用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getarea</span>(<span class="params">w, h</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> w = w || <span class="number">10</span></span><br><span class="line">  <span class="keyword">var</span> h = h || <span class="number">15</span></span><br><span class="line">  <span class="keyword">return</span> w * h</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有了 ES6 对默认参数的支持后</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getarea</span>(<span class="params">w = <span class="number">10</span>, h = <span class="number">15</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> w * h</span><br><span class="line">&#125;</span><br><span class="line">getarea(<span class="number">5</span>) <span class="comment">//75</span></span><br></pre></td></tr></table></figure>
+<h3 id="剩余参数-（Rest-Parameters-）"><a href="#剩余参数-（Rest-Parameters-）" class="headerlink" title="剩余参数 （Rest Parameters ）"></a>剩余参数 （Rest Parameters ）</h3><p>ES6 中的 Rest Parameters 使得将函数参数转换成数组的操作变得简单。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addit</span>(<span class="params">...theNumber</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//get the sum of the array elements</span></span><br><span class="line">  <span class="keyword">return</span> theNumber.reduce( <span class="function">(<span class="params">prevnum.curnum</span>)=&gt;</span>prevnu+curnum,<span class="number">0</span>)</span><br><span class="line">&#125;</span><br><span class="line">addit(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)<span class="comment">//10</span></span><br></pre></td></tr></table></figure>
+<p>通过在命名参数前添加 3 个点。在该位置和之后输入到函数中的参数将自动转换为数组。</p>
+<p>没有 Rest Parameters 则会手动将参数转换为数组 :</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addit</span>(<span class="params">theNumbers</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// force arguments object into array</span></span><br><span class="line">  <span class="keyword">var</span> numArray = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>)</span><br><span class="line">  <span class="keyword">return</span> numArray.reduce(<span class="function">(<span class="params">prevnum, curnum</span>) =&gt;</span> prevnum + curnum, <span class="number">0</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">addit(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>) <span class="comment">// returns 10</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">...[a, b, c]</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b + c</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f(<span class="number">1</span>) <span class="comment">// NaN (b and c are undefined)</span></span><br><span class="line">f(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>) <span class="comment">// 6</span></span><br><span class="line">f(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>) <span class="comment">//6 (the fourth parameter is not destructured)</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/23/JS/this指向/" rel="next" title="this指向">
+                <i class="fa fa-chevron-left"></i> this指向
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/31/webpack项目配置/" rel="prev" title="webpack项目配置">
+                webpack项目配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="colorfulWorld" />
+            
+              <p class="site-author-name" itemprop="name">colorfulWorld</p>
+              <p class="site-description motion-element" itemprop="description">just remember</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#set-对象-（可用于去重）"><span class="nav-number">1.</span> <span class="nav-text">set 对象 （可用于去重）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-from"><span class="nav-number">2.</span> <span class="nav-text">Array.from()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#super"><span class="nav-number">3.</span> <span class="nav-text">super</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步函数"><span class="nav-number">4.</span> <span class="nav-text">异步函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一个以-async-为前缀的常规函数"><span class="nav-number">4.1.</span> <span class="nav-text">一个以 async 为前缀的常规函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在异步函数（Async-function-）内，使用-await-关键字调用异步操作函数"><span class="nav-number">4.2.</span> <span class="nav-text">在异步函数（Async function ）内，使用 await 关键字调用异步操作函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解构"><span class="nav-number">5.</span> <span class="nav-text">解构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌套对象解构"><span class="nav-number">5.1.</span> <span class="nav-text">嵌套对象解构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解构数组"><span class="nav-number">5.2.</span> <span class="nav-text">解构数组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#默认和剩余参数"><span class="nav-number">6.</span> <span class="nav-text">默认和剩余参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#默认参数"><span class="nav-number">6.1.</span> <span class="nav-text">默认参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#剩余参数-（Rest-Parameters-）"><span class="nav-number">6.2.</span> <span class="nav-text">剩余参数 （Rest Parameters ）</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">colorfulWorld</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

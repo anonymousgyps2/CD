@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="在学习原生的过程中的困惑与解惑的总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="疑难杂问整理（原生JS）">
+<meta property="og:url" content="colorfulWorld.github.io/2018/01/19/JS/疑难杂问整理（原生JS）/index.html">
+<meta property="og:site_name" content="Eternal">
+<meta property="og:description" content="在学习原生的过程中的困惑与解惑的总结">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="/images/problem/2.png">
+<meta property="og:image" content="/images/problem/1.png">
+<meta property="og:updated_time" content="2018-03-23T09:38:22.916Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="疑难杂问整理（原生JS）">
+<meta name="twitter:description" content="在学习原生的过程中的困惑与解惑的总结">
+<meta name="twitter:image" content="/images/problem/2.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="colorfulWorld.github.io/2018/01/19/JS/疑难杂问整理（原生JS）/"/>
+
+
+
+
+
+  <title>疑难杂问整理（原生JS） | Eternal</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Eternal</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="colorfulWorld.github.io/2018/01/19/JS/疑难杂问整理（原生JS）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="colorfulWorld">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Eternal">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">疑难杂问整理（原生JS）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-19T10:12:08+08:00">
+                2018-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/原生JS/" itemprop="url" rel="index">
+                    <span itemprop="name">原生JS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在学习原生的过程中的困惑与解惑的总结</p>
+<a id="more"></a>
+<h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createPerson</span>(<span class="params">name, age, job</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>()</span><br><span class="line">  o.name = name</span><br><span class="line">  o.age = age</span><br><span class="line">  o.job = job</span><br><span class="line">  o.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person1 = createPerson(<span class="string">'Nicholas'</span>, <span class="number">29</span>, <span class="string">'Software Engineer'</span>)</span><br><span class="line"><span class="keyword">var</span> person2 = createPerson(<span class="string">'Greg'</span>, <span class="number">27</span>, <span class="string">'Doctor'</span>)</span><br><span class="line"></span><br><span class="line">person1 <span class="comment">// Person &#123;name: "Zaxlct", age: 28, job: "Software Engineer", sayName: ƒ&#125;</span></span><br><span class="line">person2 <span class="comment">// Person &#123;name: "Mick", age: 23, job: "Doctor", sayName: ƒ&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age, job</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">  <span class="keyword">this</span>.age = age</span><br><span class="line">  <span class="keyword">this</span>.job = job</span><br><span class="line">  <span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(<span class="string">'Zaxlct'</span>, <span class="number">28</span>, <span class="string">'Software Engineer'</span>)</span><br><span class="line"><span class="keyword">var</span> person2 = <span class="keyword">new</span> Person(<span class="string">'Mick'</span>, <span class="number">23</span>, <span class="string">'Doctor'</span>)</span><br><span class="line"><span class="keyword">var</span> person3 = <span class="keyword">new</span> Person(<span class="string">'Mick'</span>, <span class="number">23</span>, <span class="string">'Doctor'</span>)</span><br><span class="line">person1 <span class="comment">// Person &#123;name: "Zaxlct", age: 28, job: "Software Engineer", sayName: ƒ&#125;</span></span><br><span class="line">person2 <span class="comment">// Person &#123;name: "Mick", age: 23, job: "Doctor", sayName: ƒ&#125;</span></span><br><span class="line">person2 === person3 <span class="comment">//false</span></span><br><span class="line">person1.constructor == Person <span class="comment">//true</span></span><br><span class="line">Person.prototype <span class="comment">// &#123;constructor: ƒ&#125;  为原型对象</span></span><br><span class="line">person1.prototype <span class="comment">//undefined</span></span><br><span class="line">Person.prototype.prototype <span class="comment">//undefined</span></span><br><span class="line">person1.constructor == Person <span class="comment">//true</span></span><br><span class="line">Person.prototype.constructor == Person <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>实例的构造函数属性（constructor ）指向构造函数。所有的原型对象都会自动获得一个 constructor （构造函数属性）属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age, job</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">  <span class="keyword">this</span>.age = age</span><br><span class="line">  <span class="keyword">this</span>.job = job</span><br><span class="line">  <span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person1 = Person(<span class="string">'Zaxlct'</span>, <span class="number">28</span>, <span class="string">'Software Engineer'</span>)</span><br><span class="line"><span class="keyword">var</span> person2 = Person(<span class="string">'Mick'</span>, <span class="number">23</span>, <span class="string">'Doctor'</span>)</span><br><span class="line">person1 <span class="comment">// this 指向window 且被person2覆盖</span></span><br><span class="line">person2 <span class="comment">// this 指向window</span></span><br></pre></td></tr></table></figure>
+<p><strong>与工厂模式的区别</strong></p>
+<ul>
+<li>没有显示创建对象（new 运算符创建并实例化新对象）。</li>
+<li>直接将属性和方法赋给了 this 对象。</li>
+<li>没有 return 语句。</li>
+<li>要创建新实例必须要使用 new 运算符，否者属性和方法将会被添加到 window 对象</li>
+<li>可以使用 instanceof 操作符检测对象类型。</li>
+</ul>
+<p>构造函数的问题：构造函数的内部方法会被重复构建，不同实例内的同名函数是不相等的。</p>
+<h2 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h2><p>具体概念如下：只要协议、域名、端口有任何一个不同，都被当作是不同的域。</p>
+<p><strong> 凡是拥有 “src” 这个属性的标签都有跨域的能力</strong></p>
+<p><strong>如果是协议和端口造成的跨域问题。则前台无法解决。</strong> 同源策略具体分为以下几类：</p>
+<ul>
+<li>不同域名</li>
+<li>相同域名不同端口号，如<code>https://www.oschina.net:8000</code>和<code>https://www.oschina.net:8001</code></li>
+<li>同一个域名不同协议，如<code>http://www.oschina.net/</code>和<code>https://www.oschina.net/</code></li>
+<li>域名和域名对应的的 IP，如<code>http://b.qq.com/</code>和 <code>http://10.198.7.85</code></li>
+<li>主域和子域，如<code>http://www.oschina.net/</code>和<code>https://test.oschina.net</code></li>
+<li>子域和子域，如<code>https://test1.oschina.net</code>和<code>https://test2.oschina.net</code> 以上情况只要出现了，那么就会产生跨域问题。那么如果解决跨域问题呢，下面的小节会总结一些解决跨域常用的方法。</li>
+</ul>
+<h3 id="JSONP-带-callback-的-json"><a href="#JSONP-带-callback-的-json" class="headerlink" title="JSONP 带 callback 的 json"></a>JSONP 带 callback 的 json</h3><p>有个通俗易懂的解释 -JSONP（JSON with Padding ）是数据格式 JSON 的一种 “ 使用模式 ”，可以让网页从别的网域要数据。利用<code>&lt;script&gt;</code>标签没有跨域限制，来达到与第 3 方通讯的目的。</p>
+<p><strong> jsonp 的客户端具体实现：</strong></p>
+<ol>
+<li>远程服务器 remoteserver.com 根目录下有个 remote.js 文件代码如下：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="string">'我是远程文件'</span>)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>本地服务器 localserver.com 下有个 jsonp.html 页面代码如下：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html PUBLIC <span class="string">"-//W3C//DTD XHTML 1.0 Transitional//EN"</span> <span class="string">"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"</span>&gt;</span><br><span class="line">&lt;html xmlns=<span class="string">"http://www.w3.org/1999/xhtml"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;<span class="xml"><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line">    &lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"http://remoteserver.com/remote.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/head&gt;</span></span><br><span class="line"><span class="regexp">&lt;body&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br><span class="line">&lt;<span class="regexp">/html&gt;</span></span><br></pre></td></tr></table></figure>
+<p>页面将会弹出一个提示窗体，显示跨域调用成功。</p>
+<ol>
+<li>现在我们在 jsonp.html 页面定义一个函数，然后在远程 remote.js 中传入数据进行调用。</li>
+</ol>
+<p>jsonp.html 页面代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html PUBLIC <span class="string">"-//W3C//DTD XHTML 1.0 Transitional//EN"</span> <span class="string">"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"</span>&gt;</span><br><span class="line">&lt;html xmlns=<span class="string">"http://www.w3.org/1999/xhtml"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;<span class="xml"><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line">    &lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    <span class="keyword">var</span> localHandler = <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">        alert(<span class="string">'我是本地函数，可以被跨域的remote.js文件调用，远程js带来的数据是：'</span> + data.result);</span><br><span class="line">    &#125;;</span><br><span class="line">    &lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">    &lt;script type="text/</span>javascript<span class="string">" src="</span>http:<span class="comment">//remoteserver.com/remote.js"&gt;&lt;/script&gt;</span></span><br><span class="line">&lt;<span class="regexp">/head&gt;</span></span><br><span class="line"><span class="regexp">&lt;body&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br><span class="line">&lt;<span class="regexp">/html&gt;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>remote.js 文件代码如下：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localHandler(&#123; <span class="attr">result</span>: <span class="string">'我是远程js带来的数据'</span> &#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>要注意的是他支持 GET 这一种 HTTP 请求类型</strong></p>
+<h3 id="跨域资源共享（CORS-Cross-Origin-Resource-Sharing-）"><a href="#跨域资源共享（CORS-Cross-Origin-Resource-Sharing-）" class="headerlink" title="跨域资源共享（CORS-Cross Origin Resource Sharing ）"></a>跨域资源共享（CORS-Cross Origin Resource Sharing ）</h3><p>跨域资源共享（ CORS ）机制允许 Web 应用服务器进行跨域访问控制，从而使跨域数据传输得以安全进行。</p>
+<p>CORS 除了 GET 要求方法以外也支持其他的 HTTP 要求。浏览器 CORS 请求分成两种：</p>
+<ol>
+<li>简单请求</li>
+<li><p>协商模型 / 预检请求（Preflighted Request ），即非简单请求如何区分请求具体属于哪一种呢，下面我总结了几点：</p>
+<ol>
+<li>请求方式：</li>
+</ol>
+<ul>
+<li>GET</li>
+<li>HEAD</li>
+<li>POST</li>
+</ul>
+<ol>
+<li>HTTP 的头信息子段</li>
+</ol>
+<ul>
+<li>Accept</li>
+<li>Accept-Language</li>
+<li>Content-Language</li>
+<li>Last-Event-ID</li>
+<li>Content-Type：只限于三个值 application/x-www-form-urlencoded、multipart/form-data 、 text/plain，其中 ‘text/plain’ 默认支持，其他两种则需要预检请求和服务器协商。</li>
+</ul>
+</li>
+</ol>
+<p>满足以上两大点的即为简单请求，否则为非简单请求。</p>
+<p>假如站点 <a href="http://foo.example" target="_blank" rel="noopener">http://foo.example</a> 的网页应用想要访问 <a href="http://bar.other" target="_blank" rel="noopener">http://bar.other</a> 的资源。<a href="http://foo.example" target="_blank" rel="noopener">http://foo.example</a> 的网页中可能包含类似于下面的 JavaScript 代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> invocation = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line"><span class="keyword">var</span> url = <span class="string">'http://bar.other/resources/public-data/'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callOtherDomain</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (invocation) &#123;</span><br><span class="line">    invocation.open(<span class="string">'GET'</span>, url, <span class="literal">true</span>)</span><br><span class="line">    invocation.onreadystatechange = handler</span><br><span class="line">    invocation.send()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="document-domain-iframe-（适用于主域名相同的情况）"><a href="#document-domain-iframe-（适用于主域名相同的情况）" class="headerlink" title="document.domain+iframe （适用于主域名相同的情况）"></a>document.domain+iframe （适用于主域名相同的情况）</h3><p>比如，有一个页面，它的地址是<a href="http://www.damonare.cn/a.html" target="_blank" rel="noopener">http://www.damonare.cn/a.html</a> ， 在这个页面里面有一个 iframe，它的 src 是<a href="http://damonare.cn/b.html" target="_blank" rel="noopener">http://damonare.cn/b.html</a>, 很显然，这个页面与它里面的 iframe 框架是不同域的，所以我们是无法通过在页面中书写 js 代码来获取 iframe 中的东西的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> iframe = <span class="built_in">document</span>.getElementById(<span class="string">'￼ifame'</span>);</span><br><span class="line">        <span class="keyword">var</span> win = iframe.contentWindow;<span class="comment">//可以获取到iframe里的window对象，但该window对象的属性和方法几乎是不可用的</span></span><br><span class="line">        <span class="keyword">var</span> doc = win.document;<span class="comment">//这里获取不到iframe里的document对象</span></span><br><span class="line">        <span class="keyword">var</span> name = win.name;<span class="comment">//这里同样获取不到window对象的name属性</span></span><br><span class="line">    &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;iframe id = "iframe" src="http:/</span><span class="regexp">/damonare.cn/</span>b.html<span class="string">" onload = "</span>test()<span class="string">"&gt;&lt;\/iframe&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这时只要把<a href="http://www.damonare.cn/a.html和http://damonare.cn/b.html这两个页面的document.domain都设成相同的域名就可以了。但要注意的是，document.domain的设置是有限制的，我们只能把document.domain设置成自身或更高一级的父域，且主域必须相同。" target="_blank" rel="noopener">http://www.damonare.cn/a.html和http://damonare.cn/b.html这两个页面的document.domain都设成相同的域名就可以了。但要注意的是，document.domain的设置是有限制的，我们只能把document.domain设置成自身或更高一级的父域，且主域必须相同。</a></p>
+<ul>
+<li>在页面<a href="http://www.damonare.cn/a.html" target="_blank" rel="noopener">http://www.damonare.cn/a.html</a> 中设置 document.domain:</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe id = <span class="string">"iframe"</span> src=<span class="string">"http://damonare.cn/b.html"</span> onload = <span class="string">"test()"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span></span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    <span class="built_in">document</span>.domain = <span class="string">'damonare.cn'</span>;<span class="comment">//设置成主域</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(<span class="built_in">document</span>.getElementById(<span class="string">'￼iframe'</span>).contentWindow);<span class="comment">//contentWindow 可取得子窗口的 window 对象</span></span><br><span class="line">    &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>在页面<a href="http://damonare.cn/b.html" target="_blank" rel="noopener">http://damonare.cn/b.html</a> 中也设置 document.domain:</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">;<span class="xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span></span><br><span class="line"><span class="xml">  document.domain = 'damonare.cn';//在iframe载入这个页面也设置document.domain，使之与主页面的document.domain相同</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>修改 document.domain 的方法只适用于不同子域的框架间的交互。</p>
+<h3 id="通过-location-hash-跨域"><a href="#通过-location-hash-跨域" class="headerlink" title="通过 location.hash 跨域"></a>通过 location.hash 跨域</h3><p>此方法的原理就是改变 URL 的 hash 部分来进行双向通信。每个 window 通过改变其他 window 的 location 来发送消息（由于两个页面不在同一个域下 IE、Chrome 不允许修改 parent.location.hash 的值，所以要借助于父窗口域名下的一个代理 iframe），并通过监听自己的 URL 的变化来接收消息。这个方式的通信会造成一些不必要的浏览器历史记录，而且有些浏览器不支持 onhashchange 事件，需要轮询来获知 URL 的改变，最后，这样做也存在缺点，诸如数据直接暴露在了 url 中，数据容量和类型都有限等。</p>
+<h3 id="通过-HTML5-的-postMessage-方法跨域"><a href="#通过-HTML5-的-postMessage-方法跨域" class="headerlink" title="通过 HTML5 的 postMessage 方法跨域"></a>通过 HTML5 的 postMessage 方法跨域</h3><p>这个功能主要包括接受信息的 ”message” 事件和发送消息的 ”postMessage” 方法。比如<a href="http://damonare.cn域的A页面通过iframe嵌入了一个http://google.com域的B页面，可以通过以下方法实现A和B的通信" target="_blank" rel="noopener">http://damonare.cn域的A页面通过iframe嵌入了一个http://google.com域的B页面，可以通过以下方法实现A和B的通信</a></p>
+<p>A 页面通过 postMessage 方法发送消息：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> ifr = <span class="built_in">document</span>.getElementById(<span class="string">'ifr'</span>)</span><br><span class="line">  <span class="keyword">var</span> targetOrigin = <span class="string">'http://www.google.com'</span></span><br><span class="line">  ifr.contentWindow.postMessage(<span class="string">'hello world!'</span>, targetOrigin)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>postMessage 的使用方法</strong></p>
+<p>otherWindow.postMessage(message, targetOrigin);</p>
+<ul>
+<li>otherWindow: 指目标窗口，也就是给哪个 window 发消息，是 window.frames 属性的成员或者由 window.open 方法创建的窗口</li>
+<li>message: 是要发送的消息，类型为 String、Object (IE8 、 9 不支持 )</li>
+<li>targetOrigin: 是限定消息接收范围，不限制请使用 ‘*</li>
+</ul>
+<p>B 页面通过 message 事件监听并接受消息 :</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> data = event.data <span class="comment">//消息</span></span><br><span class="line">  <span class="keyword">var</span> origin = event.origin <span class="comment">//消息来源地址</span></span><br><span class="line">  <span class="keyword">var</span> source = event.source <span class="comment">//源Window对象</span></span><br><span class="line">  <span class="keyword">if</span> (origin == <span class="string">'http://www.baidu.com'</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data) <span class="comment">//hello world!</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">window</span>.addEventListener != <span class="string">'undefined'</span>) &#123;</span><br><span class="line">  <span class="built_in">window</span>.addEventListener(<span class="string">'message'</span>, onmessage, <span class="literal">false</span>)</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">window</span>.attachEvent != <span class="string">'undefined'</span>) &#123;</span><br><span class="line">  <span class="comment">//for ie</span></span><br><span class="line">  <span class="built_in">window</span>.attachEvent(<span class="string">'onmessage'</span>, onmessage)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="通过-window-name-跨域"><a href="#通过-window-name-跨域" class="headerlink" title="通过 window.name 跨域"></a>通过 window.name 跨域</h3><p>在一个窗口生命周期内，窗口载入的所有的页面都是共享一个 window.name 的，每一个页面对 window.name 都有读写的权限，window.name 是持久的存在于一个窗口载入的所有页面，并不会因为新的页面的载入而被重置。</p>
+<p>下面为 a.html 中代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="built_in">window</span>.name = <span class="string">'我是页面a中设置的值'</span>;</span><br><span class="line">    setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">window</span>.location = <span class="string">'b.html'</span>;</span><br><span class="line">    &#125;,<span class="number">2000</span>)<span class="comment">//两秒后把一个新页面b.html载入到当前的window中</span></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>b.html 中的代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">;<span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"><span class="built_in">console</span>.log(<span class="built_in">window</span>.name);<span class="comment">//读取window.name的值</span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="从输入-URL-到-页面加载发生了什么"><a href="#从输入-URL-到-页面加载发生了什么" class="headerlink" title="从输入 URL 到 页面加载发生了什么"></a>从输入 URL 到 页面加载发生了什么</h2><p>发生过程：</p>
+<ul>
+<li>查看 web 缓存</li>
+<li>DNS 解析</li>
+<li>TCP 连接</li>
+<li>发送 HTTP 请求</li>
+<li>服务器处理请求并返回 HTTP 报文</li>
+<li>浏览器解析渲染页面</li>
+<li>连接结束</li>
+</ul>
+<h3 id="查看-web-缓存"><a href="#查看-web-缓存" class="headerlink" title="查看 web 缓存"></a>查看 web 缓存</h3><p>三级缓存原理</p>
+<ol>
+<li>先去内存中看，如果有，直接加载。</li>
+<li>如果内存没有，这区硬盘获取，如果有直接加载。</li>
+<li>如果硬盘中也没有，那么就进行网络请求。</li>
+<li>加载到的资源缓存到硬盘和内存。</li>
+</ol>
+<h4 id="浏览器缓存机制"><a href="#浏览器缓存机制" class="headerlink" title="浏览器缓存机制"></a>浏览器缓存机制</h4><p><img src="/images/problem/2.png" alt="img caption"></p>
+<h5 id="当前缓存是否过期。"><a href="#当前缓存是否过期。" class="headerlink" title="当前缓存是否过期。"></a>当前缓存是否过期。</h5><p>如果浏览器通过某些条件 ( 条件之后再说 ) 判断出来，ok 现在这个缓存没有过期可以用，那么连请求都不会发的，直接是启用之前浏览器缓存下来的那份文件 (from memory cache). 浏览器直接通过缓存读取了出来，注意这个时候是不会向浏览器请求的！ 如果过期了就会向服务器重新发起请求，但是不一定就会重新拉取文件！</p>
+<h5 id="服务器中的文件是否改动。"><a href="#服务器中的文件是否改动。" class="headerlink" title="服务器中的文件是否改动。"></a>服务器中的文件是否改动。</h5><ol>
+<li><p>缓存过期，文件有改动：如果服务器发现这个文件改变了那么你肯定不能再用以前浏览器的缓存了，那就返回个 200 并且带上新的文件。</p>
+</li>
+<li><p>缓存过期，文件无改动：同时如果发现虽然那个缓存虽然过期了，可你在服务器端的文件没有变过，那么服务器只会给你返回一个头信息 (304)，让你继续用你那过期的缓存，这样就节省了很多传输文件的时间带宽啥的</p>
+</li>
+</ol>
+<p>过期了的缓存需要请求一次服务器，若服务器判断说这个文件没有改变还能用，那就返回 304。浏览器认识 304，它就会去读取过期缓存。否则就真的传一份新文件到浏览器。</p>
+<h3 id="DNS-解析"><a href="#DNS-解析" class="headerlink" title="DNS 解析"></a>DNS 解析</h3><p>浏览器查找域名对应的 IP 地址。互联网上每一台计算机的唯一识别是它的 IP 地址，DNS 解析就是讲网址转换为 IP 地址。</p>
+<p>查找过程：</p>
+<ol>
+<li>浏览器搜索自己的 DNS 缓存（维护一张域名与 IP 地址的对应表）</li>
+<li>搜索操作系统中的 DNS 缓存（维护一张域名与 IP 地址的对应表）</li>
+<li>搜索操作系统的 host 文件（Windows 环境下，维护一张域名与 IP 地址的对应表）</li>
+<li>操作系统间根域名发送至 LDNS（本地域名服务器），首先查找自己的缓存若是失败：<ul>
+<li>向根域名服务器发起请求，此处根域名服务器返回 com 域的 sing 机域名服务器地址。</li>
+<li>LDNS 向 com 域的顶级域名服务器发起请求，得到 www.baidu.com 的地址。</li>
+<li>LONS 向 baidu.com 域名服务器发起请求，得到 www.baidu.com 的 IP 地址。</li>
+</ul>
+</li>
+<li>LDNS 将得到的 IP 地址返回给操作系统，同时将 IP 地址缓存起来；</li>
+<li>操作系统将 IP 地址返回给浏览器，同时自己也缓存起来；</li>
+</ol>
+<p>此时浏览器得到了域名对应的 IP 地址。</p>
+<h3 id="TCP-连接"><a href="#TCP-连接" class="headerlink" title="TCP 连接"></a>TCP 连接</h3><p>浏览器根据 IP 地址与服务器建立 socket 连接 。</p>
+<h3 id="发送-HTTP-请求"><a href="#发送-HTTP-请求" class="headerlink" title="发送 HTTP 请求"></a>发送 HTTP 请求</h3><ol>
+<li>浏览器根据 URL 内容生成 HTTP 请求，请求中包含文件的位置，请求文件的方式等。</li>
+<li>服务器接到请求后，会根据 HTTP 请求中的内容来决定如何获取相应的 HTML 文件。</li>
+</ol>
+<h4 id="http-状态码"><a href="#http-状态码" class="headerlink" title="http 状态码"></a>http 状态码</h4><ol>
+<li>200 form memory cache 不访问服务器，直接读缓存 ，此时的缓存是缓存在内存中的，当 kill 进程之后数据就会不存在。这种方式只能缓存派生资源。</li>
+<li>200 OK (from cache) 是浏览器没有跟服务器确认，直接用了浏览器缓存。</li>
+<li>304 Not Modified 是浏览器和服务器多确认了一次缓存有效性，再用的缓存。200(from cache) 是速度最快的 , 因为不需要访问远程服务器 , 直接使用本地缓存 .304 的过程是 , 先请求服务器 , 然后服务器告诉我们这个资源没变 , 浏览器再使用本地缓存。</li>
+<li>200 from dist cache 不访问服务器，直接度缓存，当进程 kill 时，数据依旧存在。只能缓存派生资源。</li>
+</ol>
+<p><img src="/images/problem/1.png" alt="img caption"></p>
+<h3 id="浏览器解析渲染页面"><a href="#浏览器解析渲染页面" class="headerlink" title="浏览器解析渲染页面"></a>浏览器解析渲染页面</h3><p>现代浏览器渲染页面过程是：解码（字节流到字符流） ——&gt; 分词（此法分析） ——&gt; 解析（语法分析）——&gt; 构建 DOM 树 ——&gt; 构建渲染树 ——&gt; 布局渲染树 ——&gt; 绘制渲染树</p>
+<h3 id="连接结束"><a href="#连接结束" class="headerlink" title="连接结束"></a>连接结束</h3><p>断开连接 –4 次挥手</p>
+<ul>
+<li><p>为什么服务器在接到断开请求时不立即同意断开：当服务器收到断开连接的请求时，可能仍然有数据未发送完毕，所以服务器先发送确认信号，等所有数据发送完毕后再同意断开。</p>
+</li>
+<li><p>第四次握手后，主机发送确认信号后并没有立即断开连接，而是等待了 2 个报文传送周期，原因是：如果第四次握手的确认信息丢失，服务器将会重新发送第三次握手的断开连接的信号，而服务器发觉丢包与重新发送的断开连接到达主机的时间正好为 2 个报文传输周期。</p>
+</li>
+</ul>
+<h2 id="session、cookie、seesionStorage、localStorage-的区别"><a href="#session、cookie、seesionStorage、localStorage-的区别" class="headerlink" title="session、cookie、seesionStorage、localStorage 的区别"></a>session、cookie、seesionStorage、localStorage 的区别</h2><p>cookie 和 session 都是用来跟踪浏览器用户身份的会话方式。</p>
+<h3 id="cookie-机制"><a href="#cookie-机制" class="headerlink" title="cookie 机制"></a>cookie 机制</h3><p>如果不子啊浏览器中设置过期时间，cookie 会被保存在内存中，生命周期谁浏览器的关闭而结束，这种 cookie 称为会话 cookie，如果设置了 cookie 过期时间会保存在硬盘中，关闭浏览器之后，cookie 数据仍然存在，直到过期时间结束才消失。</p>
+<p>cookie 是服务器发给客户端的特殊信息，cookie 是以文本的方式保存在客户端，每次请求时会带上它。</p>
+<h3 id="session-机制"><a href="#session-机制" class="headerlink" title="session 机制"></a>session 机制</h3><p>当服务器收到请求需要创建 seesion 对象时，首先会检查客户端请求是否包含 sessionId。如果有 seesionId,服务器将根据该 id 返回对象的 session 对象，如果没有 sessionid,服务器将会创建新的 session 对象，并把 sessionid 再本次响应中返回给客户端。通常使用 cookie 方式存储 sessionid 到客户端，再交互中浏览器按照规则将 sessionid 发给服务端。如果用户禁用 cookie，则要使用 URL 重写，可以通过 response.encodeURL(url)进行实现；API 对 encodeURL 的结束为，当浏览器支持 Cookie 时，url 不做任何处理；当浏览器不支持 Cookie 时，url 不做任何处理；当浏览器不支持 Cookie 的时候，将会重写 URL 将 seesionid 拼接到访问地址之后。</p>
+<h3 id="存储内容"><a href="#存储内容" class="headerlink" title="存储内容"></a>存储内容</h3><p>cookie 只能保存字符串，以文本的方式；session 通过类型与 Hashtable 的数据结构来保存，能支持任何类型的对象（session 中可含有多个对象）。</p>
+<h3 id="存储的大小"><a href="#存储的大小" class="headerlink" title="存储的大小"></a>存储的大小</h3><ul>
+<li>cookie:单个 cookie 保存的数据不能超过 4kb;</li>
+<li>session:大小没有限制。</li>
+</ul>
+<h3 id="sessionStorage"><a href="#sessionStorage" class="headerlink" title="sessionStorage"></a>sessionStorage</h3><p>是一个 HTML5 新增的一个会话储存对象，用于临时保存同一个窗口（或标签页）的数据，再关闭窗口或关闭标签页之后会将删除这些数据。</p>
+<p>在 JavaScript 中可以通过 window。sessionStorage 或 sessionStrorage</p>
+<p>非常适合 SPA，可以方便再各业务模块进行传值</p>
+<h3 id="localSotrage"><a href="#localSotrage" class="headerlink" title="localSotrage"></a>localSotrage</h3><p>localStorage 存储的数据是永久性的。</p>
+<h2 id="Javascript-的节流和防抖"><a href="#Javascript-的节流和防抖" class="headerlink" title="Javascript 的节流和防抖"></a>Javascript 的节流和防抖</h2><p>函数节流和函数防抖，两者都是优化高频率执行 JS 代码的一种手段。</p>
+<h3 id="函数节流"><a href="#函数节流" class="headerlink" title="函数节流"></a>函数节流</h3><p>是指一定时间内 js 方法只跑一次。</p>
+<p>函数节流应用的实际场景，多数在监听页面元素滚动时间的时候会用到。因为滚动事件，是一个高频触发的事件。以下是监听页面元素滚动的示例代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//函数节流</span></span><br><span class="line"><span class="keyword">var</span> canRun = <span class="literal">true</span></span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'throttle'</span>).onsroll = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!canRun) &#123;</span><br><span class="line">    <span class="comment">//判断是否空闲，如果在执行中，则直接return</span></span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line">  canRun = <span class="literal">false</span></span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'函数节流'</span>)</span><br><span class="line">    canRun = <span class="literal">true</span></span><br><span class="line">  &#125;, <span class="number">300</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="函数防抖"><a href="#函数防抖" class="headerlink" title="函数防抖"></a>函数防抖</h3><p>函数防抖的应有场景，最常见的就是用户注册的时候的手机号码验证和邮箱验证了。只有等用户输入完毕后，前端才需要检查格式是否正确，如果不正确，在弹出提示语。以下还是以页面元素滚动监听的例子，来解析：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//函数防抖</span></span><br><span class="line"><span class="keyword">var</span> timer = fasle</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'document'</span>).onsrcoll = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  clearTimeout(timer).timer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//清楚未执行的代码，重置回初始状态</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'函数防抖'</span>)</span><br><span class="line">  &#125;, <span class="number">300</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>函数防抖的要点，也是需要一个 setTimeout 来辅助实现。延迟执行需要跑的代码</p>
+<h2 id="html-页面的渲染过程"><a href="#html-页面的渲染过程" class="headerlink" title="html 页面的渲染过程"></a>html 页面的渲染过程</h2><p>当用户请求页面时，浏览器获取 HTML 并构造 DOM。然后获取 CSS 并构造 CSSOM。然后通过匹配 DOM 和 CSSDOM 生成渲染树。如果有任何的 javascript 需要解决，浏览器将不会开始渲染页面，知道 javascript 解决完毕。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/18/JS/JS基础-ES5/" rel="next" title="JS基础(ES5)">
+                <i class="fa fa-chevron-left"></i> JS基础(ES5)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/23/JS/作用域/" rel="prev" title="作用域">
+                作用域 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="colorfulWorld" />
+            
+              <p class="site-author-name" itemprop="name">colorfulWorld</p>
+              <p class="site-description motion-element" itemprop="description">just remember</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#工厂模式"><span class="nav-number">1.</span> <span class="nav-text">工厂模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数"><span class="nav-number">2.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跨域"><span class="nav-number">3.</span> <span class="nav-text">跨域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSONP-带-callback-的-json"><span class="nav-number">3.1.</span> <span class="nav-text">JSONP 带 callback 的 json</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跨域资源共享（CORS-Cross-Origin-Resource-Sharing-）"><span class="nav-number">3.2.</span> <span class="nav-text">跨域资源共享（CORS-Cross Origin Resource Sharing ）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#document-domain-iframe-（适用于主域名相同的情况）"><span class="nav-number">3.3.</span> <span class="nav-text">document.domain+iframe （适用于主域名相同的情况）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过-location-hash-跨域"><span class="nav-number">3.4.</span> <span class="nav-text">通过 location.hash 跨域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过-HTML5-的-postMessage-方法跨域"><span class="nav-number">3.5.</span> <span class="nav-text">通过 HTML5 的 postMessage 方法跨域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过-window-name-跨域"><span class="nav-number">3.6.</span> <span class="nav-text">通过 window.name 跨域</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从输入-URL-到-页面加载发生了什么"><span class="nav-number">4.</span> <span class="nav-text">从输入 URL 到 页面加载发生了什么</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看-web-缓存"><span class="nav-number">4.1.</span> <span class="nav-text">查看 web 缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#浏览器缓存机制"><span class="nav-number">4.1.1.</span> <span class="nav-text">浏览器缓存机制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#当前缓存是否过期。"><span class="nav-number">4.1.1.1.</span> <span class="nav-text">当前缓存是否过期。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#服务器中的文件是否改动。"><span class="nav-number">4.1.1.2.</span> <span class="nav-text">服务器中的文件是否改动。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DNS-解析"><span class="nav-number">4.2.</span> <span class="nav-text">DNS 解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-连接"><span class="nav-number">4.3.</span> <span class="nav-text">TCP 连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发送-HTTP-请求"><span class="nav-number">4.4.</span> <span class="nav-text">发送 HTTP 请求</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#http-状态码"><span class="nav-number">4.4.1.</span> <span class="nav-text">http 状态码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器解析渲染页面"><span class="nav-number">4.5.</span> <span class="nav-text">浏览器解析渲染页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接结束"><span class="nav-number">4.6.</span> <span class="nav-text">连接结束</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#session、cookie、seesionStorage、localStorage-的区别"><span class="nav-number">5.</span> <span class="nav-text">session、cookie、seesionStorage、localStorage 的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cookie-机制"><span class="nav-number">5.1.</span> <span class="nav-text">cookie 机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#session-机制"><span class="nav-number">5.2.</span> <span class="nav-text">session 机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储内容"><span class="nav-number">5.3.</span> <span class="nav-text">存储内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储的大小"><span class="nav-number">5.4.</span> <span class="nav-text">存储的大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sessionStorage"><span class="nav-number">5.5.</span> <span class="nav-text">sessionStorage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#localSotrage"><span class="nav-number">5.6.</span> <span class="nav-text">localSotrage</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Javascript-的节流和防抖"><span class="nav-number">6.</span> <span class="nav-text">Javascript 的节流和防抖</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数节流"><span class="nav-number">6.1.</span> <span class="nav-text">函数节流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数防抖"><span class="nav-number">6.2.</span> <span class="nav-text">函数防抖</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#html-页面的渲染过程"><span class="nav-number">7.</span> <span class="nav-text">html 页面的渲染过程</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">colorfulWorld</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
