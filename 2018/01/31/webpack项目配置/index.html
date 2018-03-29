@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Eternal">
 <meta property="og:description" content="webpack 是模块化管理工具，使用 webpack 可以对模块进行压缩，预处理，按需打包，按需加载等。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-20T09:18:09.609Z">
+<meta property="og:updated_time" content="2018-03-24T03:25:09.302Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack项目配置">
 <meta name="twitter:description" content="webpack 是模块化管理工具，使用 webpack 可以对模块进行压缩，预处理，按需打包，按需加载等。">
@@ -362,7 +362,17 @@
 <li>plugins: 如前文介绍，webpack 的一些内置功能均是以插件的形式提供。</li>
 </ul>
 <h2 id="webpack与gulp的区别"><a href="#webpack与gulp的区别" class="headerlink" title="webpack与gulp的区别"></a>webpack与gulp的区别</h2><p>gulp是基于流的构建工具：all in one 的打包模式，输出一个js和一个css文件，优点是减少http请求，万金油方案。<br>webpack 是模块化管理工具，使用webpack可以对模块进行压缩、预处理、打包、按需加载。</p>
-<h2 id="一个webpack项目文件结构"><a href="#一个webpack项目文件结构" class="headerlink" title="一个webpack项目文件结构"></a>一个webpack项目文件结构</h2>
+<h2 id="一个webpack的命令行选项"><a href="#一个webpack的命令行选项" class="headerlink" title="一个webpack的命令行选项"></a>一个webpack的命令行选项</h2><ul>
+<li>webpack 用于构建一个开发目录</li>
+<li>webpack -p 用于构建一个生产目录（压缩过的）</li>
+<li>webpack –watch 用于连续地构建</li>
+<li>webapck -d 展示映射关系</li>
+<li>webpack –colors 用于美化展示关系</li>
+<li>webpack-dev-server 启动服务器</li>
+<li>webpack –display-error-details//带上参数可以找出详细的错误信息</li>
+</ul>
+<p>webpack 会根据webpack.config.js来构建bundle.js<br>依赖  babel-loader(编译器可以将es6语法转成低版本【如es5语法】提高兼容性)</p>
+
       
     </div>
     
@@ -525,7 +535,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack-的特征"><span class="nav-number">1.</span> <span class="nav-text">webpack 的特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webapck-最佳配置"><span class="nav-number">2.</span> <span class="nav-text">webapck 最佳配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack与gulp的区别"><span class="nav-number">3.</span> <span class="nav-text">webpack与gulp的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个webpack项目文件结构"><span class="nav-number">4.</span> <span class="nav-text">一个webpack项目文件结构</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack-的特征"><span class="nav-number">1.</span> <span class="nav-text">webpack 的特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webapck-最佳配置"><span class="nav-number">2.</span> <span class="nav-text">webapck 最佳配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack与gulp的区别"><span class="nav-number">3.</span> <span class="nav-text">webpack与gulp的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个webpack的命令行选项"><span class="nav-number">4.</span> <span class="nav-text">一个webpack的命令行选项</span></a></li></ol></div>
             
 
           </div>
