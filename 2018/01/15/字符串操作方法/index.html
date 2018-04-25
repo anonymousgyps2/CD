@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Eternal">
 <meta property="og:description" content="字符串常见操作方法总结">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-24T01:42:31.365Z">
+<meta property="og:updated_time" content="2018-04-02T02:41:17.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="字符串操作方法">
 <meta name="twitter:description" content="字符串常见操作方法总结">
@@ -333,6 +333,14 @@
       
         <p>字符串常见操作方法总结</p>
 <a id="more"></a>
+<h2 id="chartAt"><a href="#chartAt" class="headerlink" title="chartAt()"></a>chartAt()</h2><p>返回特定位置的字符</p>
+<h2 id="charCodeAt"><a href="#charCodeAt" class="headerlink" title="charCodeAt()"></a>charCodeAt()</h2><p>返回 0 到 65535 之间的整数，表示给定索引处的 UTF-16 代码单元。</p>
+<h2 id="concat"><a href="#concat" class="headerlink" title="concat()"></a>concat()</h2><p>连接连个字符串文本，并返回一个新的字符串</p>
+<h2 id="includes"><a href="#includes" class="headerlink" title="includes()"></a>includes()</h2><p>要在此字符串中搜索的字符串</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'Blue Whale'</span>.includes(<span class="string">'blue'</span>) <span class="comment">//return false</span></span><br></pre></td></tr></table></figure>
+<h2 id="endsWidth"><a href="#endsWidth" class="headerlink" title="endsWidth()"></a>endsWidth()</h2><p>判断一个字符串的结尾收否包含其他字符串中的字符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'To be,or not to be, that is the question.'</span></span><br><span class="line">alert(str.endsWith(<span class="string">'question.'</span>)) <span class="comment">// true</span></span><br><span class="line">alert(str.endsWith(<span class="string">'to be'</span>)) <span class="comment">// false</span></span><br><span class="line">alert(str.endsWith(<span class="string">'to be'</span>, <span class="number">19</span>)) <span class="comment">// true</span></span><br><span class="line">alert(str.endsWith(<span class="string">'To be'</span>, <span class="number">5</span>)) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -420,8 +428,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -440,7 +457,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -476,6 +493,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#chartAt"><span class="nav-number">1.</span> <span class="nav-text">chartAt()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#charCodeAt"><span class="nav-number">2.</span> <span class="nav-text">charCodeAt()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#concat"><span class="nav-number">3.</span> <span class="nav-text">concat()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#includes"><span class="nav-number">4.</span> <span class="nav-text">includes()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#endsWidth"><span class="nav-number">5.</span> <span class="nav-text">endsWidth()</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
