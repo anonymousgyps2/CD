@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Eternal">
 <meta property="og:description" content="字符串常见操作方法总结">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-02T02:41:17.550Z">
+<meta property="og:updated_time" content="2018-05-18T08:39:53.955Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="字符串操作方法">
 <meta name="twitter:description" content="字符串常见操作方法总结">
@@ -337,9 +337,11 @@
 <h2 id="charCodeAt"><a href="#charCodeAt" class="headerlink" title="charCodeAt()"></a>charCodeAt()</h2><p>返回 0 到 65535 之间的整数，表示给定索引处的 UTF-16 代码单元。</p>
 <h2 id="concat"><a href="#concat" class="headerlink" title="concat()"></a>concat()</h2><p>连接连个字符串文本，并返回一个新的字符串</p>
 <h2 id="includes"><a href="#includes" class="headerlink" title="includes()"></a>includes()</h2><p>要在此字符串中搜索的字符串</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'Blue Whale'</span>.includes(<span class="string">'blue'</span>) <span class="comment">//return false</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'Blue Whale'</span>.includes(<span class="string">'blue'</span>) <span class="comment">//return false</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'To be, or not to be, that is the question.'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(str.includes(<span class="string">'To be'</span>));       <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 <h2 id="endsWidth"><a href="#endsWidth" class="headerlink" title="endsWidth()"></a>endsWidth()</h2><p>判断一个字符串的结尾收否包含其他字符串中的字符。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'To be,or not to be, that is the question.'</span></span><br><span class="line">alert(str.endsWith(<span class="string">'question.'</span>)) <span class="comment">// true</span></span><br><span class="line">alert(str.endsWith(<span class="string">'to be'</span>)) <span class="comment">// false</span></span><br><span class="line">alert(str.endsWith(<span class="string">'to be'</span>, <span class="number">19</span>)) <span class="comment">// true</span></span><br><span class="line">alert(str.endsWith(<span class="string">'To be'</span>, <span class="number">5</span>)) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h2 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf()"></a>indexOf()</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'Blue Whale'</span>.indexOf(<span class="string">'Blue'</span>);     <span class="comment">// returns  0</span></span><br><span class="line"><span class="string">'Blue Whale'</span>.indexOf(<span class="string">'Blute'</span>);    <span class="comment">// returns -1</span></span><br><span class="line"><span class="string">'Blue Whale'</span>.indexOf(<span class="string">'Whale'</span>, <span class="number">0</span>); <span class="comment">// returns  5</span></span><br><span class="line"><span class="string">'Blue Whale'</span>.indexOf(<span class="string">'Whale'</span>, <span class="number">5</span>); <span class="comment">// returns  5</span></span><br><span class="line"><span class="string">'Blue Whale'</span>.indexOf(<span class="string">'Whale'</span>, <span class="number">7</span>); <span class="comment">// returns -1</span></span><br><span class="line"><span class="string">'Blue Whale'</span>.indexOf(<span class="string">''</span>);         <span class="comment">// returns  0</span></span><br><span class="line"><span class="string">'Blue Whale'</span>.indexOf(<span class="string">''</span>, <span class="number">9</span>);      <span class="comment">// returns  9</span></span><br><span class="line"><span class="string">'Blue Whale'</span>.indexOf(<span class="string">''</span>, <span class="number">10</span>);     <span class="comment">// returns 10</span></span><br><span class="line"><span class="string">'Blue Whale'</span>.indexOf(<span class="string">''</span>, <span class="number">11</span>);     <span class="comment">// returns 10</span></span><br><span class="line"><span class="string">'Blue Whale'</span>.indexOf(<span class="string">'blue'</span>); <span class="comment">// returns -1</span></span><br></pre></td></tr></table></figure>
+<h2 id="trim"><a href="#trim" class="headerlink" title="trim()"></a>trim()</h2><p>该方法从字符串的两端删除空格。这里的空格是所有空格字符（空格，制表符，不间断空格等）和所有行结束符字符（LF，CR等）。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> orig = <span class="string">'   foo  '</span>;</span><br><span class="line"><span class="built_in">console</span>.log(orig.trim()); <span class="comment">// 'foo'</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -447,7 +449,7 @@
                 alt="colorfulWorld" />
             
               <p class="site-author-name" itemprop="name">colorfulWorld</p>
-              <p class="site-description motion-element" itemprop="description">just remember</p>
+              <p class="site-description motion-element" itemprop="description">make notes</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -457,7 +459,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -468,7 +470,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -503,7 +505,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#chartAt"><span class="nav-number">1.</span> <span class="nav-text">chartAt()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#charCodeAt"><span class="nav-number">2.</span> <span class="nav-text">charCodeAt()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#concat"><span class="nav-number">3.</span> <span class="nav-text">concat()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#includes"><span class="nav-number">4.</span> <span class="nav-text">includes()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#endsWidth"><span class="nav-number">5.</span> <span class="nav-text">endsWidth()</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#chartAt"><span class="nav-number">1.</span> <span class="nav-text">chartAt()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#charCodeAt"><span class="nav-number">2.</span> <span class="nav-text">charCodeAt()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#concat"><span class="nav-number">3.</span> <span class="nav-text">concat()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#includes"><span class="nav-number">4.</span> <span class="nav-text">includes()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#endsWidth"><span class="nav-number">5.</span> <span class="nav-text">endsWidth()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#indexOf"><span class="nav-number">6.</span> <span class="nav-text">indexOf()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#trim"><span class="nav-number">7.</span> <span class="nav-text">trim()</span></a></li></ol></div>
             
 
           </div>
